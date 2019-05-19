@@ -1,0 +1,26 @@
+= form_with(model: site, local: true) do |form|
+  - if site.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(site.errors.count, "error")
+        prohibited this site from being saved:
+      %ul
+        - site.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :string
+    = form.text_field :string
+  .field
+    = form.label :user_id
+    = form.text_field :user_id
+  .field
+    = form.label :short_desc
+    = form.text_area :short_desc
+  .field
+    = form.label :desc
+    = form.text_area :desc
+  .field
+    = form.label :state
+    = form.text_field :state
+  .actions
+    = form.submit

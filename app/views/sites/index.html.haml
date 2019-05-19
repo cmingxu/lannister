@@ -1,0 +1,24 @@
+%p#notice= notice
+%h1 Sites
+%table
+  %thead
+    %tr
+      %th String
+      %th User
+      %th Short desc
+      %th Desc
+      %th State
+      %th{:colspan => "3"}
+  %tbody
+    - @sites.each do |site|
+      %tr
+        %td= site.string
+        %td= site.user_id
+        %td= site.short_desc
+        %td= site.desc
+        %td= site.state
+        %td= link_to 'Show', site
+        %td= link_to 'Edit', edit_site_path(site)
+        %td= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Site', new_site_path

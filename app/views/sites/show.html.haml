@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong String:
+  = @site.string
+%p
+  %strong User:
+  = @site.user_id
+%p
+  %strong Short desc:
+  = @site.short_desc
+%p
+  %strong Desc:
+  = @site.desc
+%p
+  %strong State:
+  = @site.state
+= link_to 'Edit', edit_site_path(@site)
+|
+= link_to 'Back', sites_path

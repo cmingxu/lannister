@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @address.name
+%p
+  %b Province:
+  = @address.province
+%p
+  %b City:
+  = @address.city
+%p
+  %b Region:
+  = @address.region
+%p
+  %b Phone:
+  = @address.phone
+%p
+  %b Default:
+  = @address.default
+
+= link_to 'Edit', edit_address_path(@address)
+\|
+= link_to 'Back', addresses_path

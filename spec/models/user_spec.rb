@@ -11,14 +11,17 @@
 #  encrypted_password :string(255)
 #
 
-class User < ApplicationRecord
-  has_one :site
-  has_many :addresses
-  has_one :default_address, -> { where(default: true) }, class_name: :address
+require 'rails_helper'
 
-  validates :name, presence: true
-  validates :name, uniqueness: true
-  validates :phone, presence: true
-  validates :phone, uniqueness: true
+RSpec.describe User, type: :model do
+  context "associations" do
+    it { should have_one(:site) }
+  end
 
+  context "validations" do
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:phone) }
+    it { should validate_uniqueness_of(:name) }
+    it { should validate_uniqueness_of(:phone) }
+  end
 end
