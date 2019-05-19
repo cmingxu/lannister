@@ -16,7 +16,12 @@ gem 'jbuilder', '~> 2.5'
 
 
 gem 'haml-rails', '~> 2.0'
-
+gem "twitter-bootstrap-rails"
+gem 'jquery-rails', '~> 4.3.1'
+gem "font-awesome-rails"
+gem "less-rails"
+gem "therubyracer"
+gem 'devise'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 

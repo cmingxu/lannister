@@ -14,4 +14,7 @@
 
 class Site < ApplicationRecord
   belongs_to :user
+
+  def self.default
+  end
 end

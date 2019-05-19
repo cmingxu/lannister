@@ -1,0 +1,6 @@
+%ol.breadcrumb
+  - breadcrumb_list.each do |b|
+    - if session[:locale].to_s == "en"
+      %li= link_to b.name_en, b.path
+    - else
+      %li= link_to b.name_zh_cn, b.path
