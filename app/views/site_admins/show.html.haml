@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Identity:
+  = @site_admin.identity
+%p
+  %b Encrypted password:
+  = @site_admin.encrypted_password
+
+= link_to 'Edit', edit_site_admin_path(@site_admin)
+\|
+= link_to 'Back', site_admins_path

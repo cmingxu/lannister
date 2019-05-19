@@ -1,0 +1,2 @@
+class SiteAdmin < ApplicationRecord
+end

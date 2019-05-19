@@ -1,0 +1,23 @@
+%h1 Listing site_admins
+
+%table
+  %thead
+    %tr
+      %th Identity
+      %th Encrypted password
+      %th
+      %th
+      %th
+
+  %tbody
+    - @site_admins.each do |site_admin|
+      %tr
+        %td= site_admin.identity
+        %td= site_admin.encrypted_password
+        %td= link_to 'Show', site_admin
+        %td= link_to 'Edit', edit_site_admin_path(site_admin)
+        %td= link_to 'Destroy', site_admin, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Site admin', new_site_admin_path

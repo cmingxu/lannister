@@ -1,0 +1,16 @@
+= form_for @site_admin do |f|
+  - if @site_admin.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@site_admin.errors.count, "error")} prohibited this site_admin from being saved:"
+      %ul
+        - @site_admin.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :identity
+    = f.text_field :identity
+  .field
+    = f.label :encrypted_password
+    = f.text_field :encrypted_password
+  .actions
+    = f.submit 'Save'
