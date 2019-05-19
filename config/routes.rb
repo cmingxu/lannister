@@ -8,4 +8,13 @@ Rails.application.routes.draw do
   #
   get 'mobile', to: 'welcome#mobile'
   root to: 'welcome#index'
+
+  namespace :dashboard do
+    get "/", to: 'welcome#index'
+  end
+
+  namespace :admin do
+    get "/", to: 'welcome#index'
+    resources :users
+  end
 end

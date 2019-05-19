@@ -1,28 +1,20 @@
 class SiteAdminsController < ApplicationController
   before_action :set_site_admin, only: [:show, :edit, :update, :destroy]
 
-  # GET /site_admins
-  # GET /site_admins.json
   def index
     @site_admins = SiteAdmin.all
   end
 
-  # GET /site_admins/1
-  # GET /site_admins/1.json
   def show
   end
 
-  # GET /site_admins/new
   def new
     @site_admin = SiteAdmin.new
   end
 
-  # GET /site_admins/1/edit
   def edit
   end
 
-  # POST /site_admins
-  # POST /site_admins.json
   def create
     @site_admin = SiteAdmin.new(site_admin_params)
 
@@ -37,8 +29,6 @@ class SiteAdminsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /site_admins/1
-  # PATCH/PUT /site_admins/1.json
   def update
     respond_to do |format|
       if @site_admin.update(site_admin_params)
@@ -51,8 +41,6 @@ class SiteAdminsController < ApplicationController
     end
   end
 
-  # DELETE /site_admins/1
-  # DELETE /site_admins/1.json
   def destroy
     @site_admin.destroy
     respond_to do |format|
