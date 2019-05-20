@@ -22,6 +22,9 @@ gem "font-awesome-rails"
 gem "less-rails"
 gem "therubyracer"
 gem 'devise'
+gem 'kaminari'
+gem 'ransack'
+
 
 gem 'bootsnap', '>= 1.1.0', require: false
 

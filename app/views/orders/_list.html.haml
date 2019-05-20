@@ -1,0 +1,23 @@
+%table.table
+  %thead
+    %th ID
+    %th 产品
+    %th 状态
+    %th 数量
+    %th 总价
+    %th 电话
+    %th 备注
+  %tbody
+    - orders.each do |order|
+      %tr
+        %td
+          \#
+          = link_to order.id, order_path(order)
+        %td= order.product.name
+        %td 未发货
+        %td= order.user.email
+        %td= order.quantity
+        %td= order.total_price
+        %td= order.created_at
+
+= paginate orders

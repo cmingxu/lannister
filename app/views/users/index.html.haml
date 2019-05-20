@@ -1,0 +1,28 @@
+-#= render :partial => "list", locals: { users: @users }
+
+= box_helper "success" do
+  = box_header_helper "买家列表", :server do
+    .box-tools.pull-right
+      -#= render :partial => "widgets/search_form", locals: { q: @q }
+  = box_body_helper do
+    = render :partial => "widgets/list_place_holder" if @users.empty?
+    - if @users.present?
+      %table.table
+        %thead
+          %th ID
+          %th 产品
+          %th 状态
+          %th 备注
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td
+                \#
+                = link_to user.id, user_path(user)
+              %td= user.email
+              %td 未发货
+              %td= user.created_at
+
+        = paginate @users
+
+

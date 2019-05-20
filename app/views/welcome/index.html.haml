@@ -1,0 +1,31 @@
+.row.margin-bottom
+  .col-md-3
+    = render :partial => "widgets/info_widget", locals: {color: :green, num: current_user.orders.count, what_cn: "新订单数", icon: :cloud, link:  orders_path}
+
+  .col-md-3
+    = render :partial => "widgets/info_widget", locals: {color: :red, num: 100000, what_cn: "今日总收入", icon: :server, link:  products_path}
+
+  .col-md-3
+    = render :partial => "widgets/info_widget", locals: {color: :warning, num: 88, what_cn: "总单数",  icon: :tasks, link:  orders_path}
+
+  .col-md-3
+    = render :partial => "widgets/info_widget", locals: {color: :warning, num: 88, what_cn: "总收入",  icon: :tasks, link:  orders_path}
+
+  .col-md-3
+    = render :partial => "widgets/info_widget", locals: {color: :red, num: 100000, what_cn: "今日总收入", icon: :server, link:  products_path}
+
+  .col-md-3
+    = render :partial => "widgets/info_widget", locals: {color: :warning, num: 88, what_cn: "总单数",  icon: :tasks, link:  orders_path}
+
+  .col-md-3
+    = render :partial => "widgets/info_widget", locals: {color: :warning, num: 88, what_cn: "总收入",  icon: :tasks, link:  orders_path}
+
+  .col-md-3
+    = render :partial => "widgets/info_widget", locals: {color: :green, num: current_user.orders.count, what_cn: "新订单数", icon: :cloud, link:  orders_path}
+
+
+.row
+  = box_helper "primary" do
+    = box_header_helper "待发货订单", :server 
+    = box_body_helper do
+      = render :partial => "orders/list", locals: { orders: @orders } 

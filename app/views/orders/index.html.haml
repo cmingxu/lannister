@@ -1,0 +1,12 @@
+-#= render :partial => "list", locals: { orders: @orders }
+
+= box_helper "success" do
+  = box_header_helper "我的订单", :server do
+    .box-tools.pull-right
+      -#= render :partial => "widgets/search_form", locals: { q: @q }
+  = box_body_helper do
+    = render :partial => "widgets/list_place_holder" if @orders.empty?
+    - if @orders.present?
+      = render :partial => "list", locals: { orders: @orders } 
+
+

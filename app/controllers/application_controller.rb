@@ -9,12 +9,11 @@ class ApplicationController < ActionController::Base
     @page_request_meta_info ||= {}
   end
 
-  def breadcrumb_list
-    @breadcrumb || []
-  end
-
   def fake_signin
     sign_in User.first
   end
 
+  def breadcrumb_list
+    (@breadcrumb_list || []).unshift OpenStruct.new(name: "首页", path: root_path)
+  end
 end

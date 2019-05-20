@@ -2,11 +2,8 @@
   .inner
     %h3= num
     %p
-      - if session[:locale].to_s == "en"
-        = what_en
-      - else
-        = what_cn
+      = what_cn
   .icon
     = raw fa_icon(icon)
 
-  = link_to raw("more info" + fa_icon("arrow-circle-right")), link, class: 'small-box-footer'
+  = link_to raw("查看详情" + fa_icon("arrow-circle-right")), link, class: 'small-box-footer'

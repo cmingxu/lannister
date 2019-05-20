@@ -14,14 +14,13 @@
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
     = yield :custom_assets
 
-  %body{class: [controller_name, "skin-blue", "sidebar-mini"].join(" ") }
+  %body{class: [controller_name, "skin-blue-light", "sidebar-mini"].join(" ") }
     .wrapper{style: 'min-height: 960px'}
       %header.main-header
         %a.logo{href: root_path}
           %span.logo-mini
 
           %span.logo-lg
-            = image_tag "", height: 28
             = "微商帮手"
         %nav.navbar.navbar-static-top
           %a.sidebar-toggle{role: 'button', data: {'toggle': 'push-menu' }}
@@ -34,39 +33,35 @@
 
             .navbar-collapse.collapse.navbar-responsive-collapse
               %ul.nav.navbar-nav.navbar-right
-                %li{class: navbar_nav_active_class(:system) }= link_to t('nav.system'), root_path
+                %li{class: navbar_nav_active_class(:system) }= link_to "最新动态", root_path
+                %li{class: navbar_nav_active_class(:system) }= link_to "帮助", root_path
                 = drop_down fa_icon(:user) + " #{current_user.display}" do
-                  = menu_item t('nav.setting'), root_path
-                  = menu_item t('nav.audits'), root_path
-                  = menu_item t('nav.logout'), destroy_user_session_path, method: :delete
+                  = menu_item "设置", root_path
+                  = menu_item "帮助", root_path
+                  = menu_item "退出登录", destroy_user_session_path, method: :delete
 
 
       %aside.main-sidebar
         %section.sidebar
           %ul.sidebar-menu.tree{data: { widget: 'tree' }}
-            %li.header= t("nav.features")
-            = sidebar_li_helper :dashboard, :home, t("nav.dashboard"), root_path, false, {"red": "new"}
-            = sidebar_li_helper :services, :bars, t("nav.services"), root_path
-            = sidebar_li_helper :pods, :server, t("nav.pods"), root_path
-            = sidebar_li_helper :service_templates, 'shopping-bag', t("nav.service_templates"), root_path
-            = sidebar_li_helper :namespaces, :copy, t("nav.namespaces"), root_path, false
-            = sidebar_li_helper :hosts, :server, t("nav.nodes"), root_path, false
-            %li.header= t("nav.other")
-            = sidebar_li_helper :system, :gears, t("nav.system"), root_path, true do
-              %ul.treeview-menu
-                = sidebar_li_helper :mesos, 'circle-thin', t("nav.mesos"), root_path, false, {}, "text-red"
+            %li.header 小店功能
+            = sidebar_li_helper :dashboard, :home, "我的小店", root_path
+            = sidebar_li_helper :orders, :bars, "全部订单", orders_path, false, {green: 2}
+            = sidebar_li_helper :products, :server, "我的产品", products_path
+            = sidebar_li_helper :users, :server, "全部买家", users_path
+            %li.header 我的设置
+            = sidebar_li_helper :system, :gears, "个人设置", root_path, true
 
       .content-wrapper
         .content-header
           .margin-bottom
             = bootstrap_flash
-          - if need_breadcrumb
-            = render :partial => "widgets/breadcrumb"
+          = render :partial => "widgets/breadcrumb"
 
         .content
           .row
             = yield
 
       %footer.main-footer
-        %p &copy; Company 2017
+        %p &copy; Company 2019 (cming.xu@gmail.com)
 

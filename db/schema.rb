@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_19_112433) do
+ActiveRecord::Schema.define(version: 2019_05_20_143619) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -24,19 +24,26 @@ ActiveRecord::Schema.define(version: 2019_05_19_112433) do
     t.integer "user_id"
   end
 
-  create_table "site_admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "identity"
-    t.string "encrypted_password"
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "product_id"
+    t.integer "quantity"
+    t.float "total_price"
+    t.integer "address_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "sites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id"
-    t.text "short_desc"
+    t.string "user_id"
     t.text "desc"
+    t.text "short_desc"
     t.string "state"
+    t.decimal "price", precision: 10
+    t.decimal "discount_price", precision: 10
+    t.integer "quantity"
+    t.integer "quantity_remain"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
