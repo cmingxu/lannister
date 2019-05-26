@@ -1,25 +1,11 @@
-= form_for @product do |f|
-  - if @product.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
-      %ul
-        - @product.errors.full_messages.each do |message|
-          %li= message
+= simple_form_for product do |form|
+  = box_body_helper do
+    = form.input :name, label: '商品名称'
+    = form.input :quantity, label: '数量'
+    = form.input :quantity_remain, label: '剩余'
+    = form.input :price, label: '价格'
+    = form.input :discount_price, label: '折后价'
+    = form.input :short_desc, as: :text, label: '商品描述'
+    = form.input :desc, as: :text, label: '商品详情'
+    = form.submit '保存', class: primary_btn_helper
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :user_id
-    = f.text_field :user_id
-  .field
-    = f.label :desc
-    = f.text_area :desc
-  .field
-    = f.label :short_desc
-    = f.text_area :short_desc
-  .field
-    = f.label :state
-    = f.text_field :state
-  .actions
-    = f.submit 'Save'

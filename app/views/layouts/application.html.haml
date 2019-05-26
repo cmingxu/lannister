@@ -49,8 +49,11 @@
             = sidebar_li_helper :orders, :bars, "全部订单", orders_path, false, {green: 2}
             = sidebar_li_helper :products, :server, "我的产品", products_path
             = sidebar_li_helper :users, :server, "全部买家", users_path
+            - if current_user.site_admin?
+              = sidebar_li_helper :sites, :server, '全部小站', sites_path
             %li.header 我的设置
-            = sidebar_li_helper :system, :gears, "个人设置", root_path, true
+            - if current_user.site_owner? and current_user.site
+              = sidebar_li_helper :system, :gears, "店铺设置", edit_site_path(current_user.site), true
 
       .content-wrapper
         .content-header

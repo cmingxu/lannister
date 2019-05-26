@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :products
   resources :users
 
+  resources :sites, only: [:edit, :update, :index]
+
   get 'mobile', to: 'welcome#mobile'
   root to: 'welcome#index'
 end

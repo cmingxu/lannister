@@ -1,29 +1,25 @@
-= box_helper "success" do
-  = box_header_helper "商品", :server do
-    .box-tools.pull-right
-      -#= render :partial => "widgets/search_form", locals: { q: @q }
-  = box_body_helper do
-    = render :partial => "widgets/list_place_holder" if @products.empty?
-    - if @products.present?
-      %table.table
-        %thead
-          %th ID
-          %th 产品
-          %th 状态
-          %th 备注
-        %tbody
-          - @products.each do |product|
-            %tr
-              %td
-                \#
-                = link_to product.id, product_path(product)
-              %td= product.name
-              %td 未发货
-              %td= product.created_at
+.col-md-8
+  = box_helper "success" do
+    = box_header_helper "商品", :server do
+      = render :partial => "form", locals: { product: @product }
 
-        = paginate @products
+.col-md-4
+  = box_helper "success" do
+    = box_body_helper do
+      = render :partial => "widgets/list_place_holder" if @products.empty?
+      - if @products.present?
+        %table.table
+          %thead
+            %th ID
+            %th 产品
+          %tbody
+            - @products.each do |product|
+              %tr
+                %td
+                  \#
+                  = link_to product.id, product_path(product)
+                %td= product.name
+          = paginate @products
 
-
-.row
   .phone-container.pull-right
     %iframe{src: mobile_path, frameborder: 0}

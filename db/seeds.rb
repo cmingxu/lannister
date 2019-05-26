@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user = User.create email: 'cming.xu@gmail.com', password: 'xuchunming'
+user.site.create name: '水润湿滑面膜小店', contact_mobile: '13699236168', contact_name: '徐春明',
+  contact_address: '湖北恩施某地某小区'
+
 p1 = user.products.create name: "最好用的面膜", price: 198,
   discount_price: 198,
   quantity: 1000,

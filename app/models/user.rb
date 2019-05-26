@@ -18,8 +18,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :recoverable, :rememberable, :validatable
   has_many :orders
   has_many :products
+  has_one :site, dependent: :destroy
 
   def site_admin?
+    true
+  end
+
+  def current_product
+    products.active.first
+  end
+
+  def site_owner?
     true
   end
 end
